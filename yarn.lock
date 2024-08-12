@@ -153,6 +153,11 @@
     "@vue/compiler-dom" "3.4.33"
     "@vue/shared" "3.4.33"
 
+"@vue/devtools-api@^6.6.3":
+  version "6.6.3"
+  resolved "https://mirrors.cloud.tencent.com/npm/@vue/devtools-api/-/devtools-api-6.6.3.tgz"
+  integrity sha512-0MiMsFma/HqA6g3KLKn+AGpL1kgKhFWszC9U29NfpWK5LE7bjeXxySWJrOJ77hBz+TBrBQ7o4QJqbPbqbs8rJw==
+
 "@vue/language-core@2.0.28":
   version "2.0.28"
   resolved "https://mirrors.cloud.tencent.com/npm/@vue/language-core/-/language-core-2.0.28.tgz"
@@ -806,6 +811,13 @@ vscode-uri@^3.0.8:
   resolved "https://mirrors.cloud.tencent.com/npm/vscode-uri/-/vscode-uri-3.0.8.tgz"
   integrity sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==
 
+vue-router@^4.4.3:
+  version "4.4.3"
+  resolved "https://mirrors.cloud.tencent.com/npm/vue-router/-/vue-router-4.4.3.tgz"
+  integrity sha512-sv6wmNKx2j3aqJQDMxLFzs/u/mjA9Z5LCgy6BE0f7yFWMjrPLnS/sPNn8ARY/FXw6byV18EFutn5lTO6+UsV5A==
+  dependencies:
+    "@vue/devtools-api" "^6.6.3"
+
 vue-template-compiler@^2.7.14:
   version "2.7.16"
   resolved "https://mirrors.cloud.tencent.com/npm/vue-template-compiler/-/vue-template-compiler-2.7.16.tgz"
@@ -823,7 +835,7 @@ vue-tsc@^2.0.24:
     "@vue/language-core" "2.0.28"
     semver "^7.5.4"
 
-vue@^3.0.0, vue@^3.2.25, vue@^3.4.31, "vue@2 || 3", vue@3.4.33:
+vue@^3.0.0, vue@^3.2.0, vue@^3.2.25, vue@^3.4.31, "vue@2 || 3", vue@3.4.33:
   version "3.4.33"
   resolved "https://mirrors.cloud.tencent.com/npm/vue/-/vue-3.4.33.tgz"
   integrity sha512-VdMCWQOummbhctl4QFMcW6eNtXHsFyDlX60O/tsSQuCcuDOnJ1qPOhhVla65Niece7xq/P2zyZReIO5mP+LGTQ==

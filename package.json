@@ -12,7 +12,8 @@
     "@vant/auto-import-resolver": "^1.2.1",
     "unplugin-vue-components": "^0.27.3",
     "vant": "^4.9.3",
-    "vue": "^3.4.31"
+    "vue": "^3.4.31",
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",

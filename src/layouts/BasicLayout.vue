@@ -13,24 +13,11 @@
     </template>
 
   </van-nav-bar>
-  <slot name="content">
-
-  </slot>
-  <div id="content">
-    <template v-if="active === 'index'">
-      <Index></Index>
-    </template>
-    <template v-if="active === 'team'">
-      <Team></Team>
-    </template>
-  </div>
-
-
-
-  <van-tabbar v-model="active" @change="onChange">
-    <van-tabbar-item icon="home-o" name="index">主页</van-tabbar-item>
-    <van-tabbar-item icon="search" name="team">队伍</van-tabbar-item>
-    <van-tabbar-item icon="user" name="user">个人</van-tabbar-item>
+  <router-view />
+  <van-tabbar route >
+    <van-tabbar-item replace to="/" icon="home-o" name="index">主页</van-tabbar-item>
+    <van-tabbar-item replace to="/team" icon="search" name="team">队伍</van-tabbar-item>
+    <van-tabbar-item replace to="/user" icon="user" name="user">个人</van-tabbar-item>
 
   </van-tabbar>
 
@@ -39,8 +26,6 @@
 <script setup>
 import {ref} from 'vue';
 import {Toast} from 'vant';
-import Index from "../pages/Index.vue";
-import Team from "../pages/Team.vue";
 
 const active = ref("index"); //默认主页高亮
 const onChange = (index) => Toast(`标签 ${index}`);

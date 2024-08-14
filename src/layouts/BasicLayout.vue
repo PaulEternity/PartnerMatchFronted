@@ -26,13 +26,17 @@
 <script setup>
 import {ref} from 'vue';
 import {Toast} from 'vant';
+import {useRouter} from "vue-router";
 
 const active = ref("index"); //默认主页高亮
 const onChange = (index) => Toast(`标签 ${index}`);
 
+const router = useRouter()
 
 const onClickLeft = () => history.back();
-const onClickRight = () => alert("右侧");
+const onClickRight = () => {
+  router.push('/search')
+}
 
 
 </script>

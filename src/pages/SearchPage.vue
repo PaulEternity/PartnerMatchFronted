@@ -9,10 +9,10 @@
     />
   </form>
   <van-divider content-position="left">已选标签</van-divider>
-  <div v-if="activeIds.length===0">选择标签</div>
+  <div v-if="activeIds.length === 0">选择标签</div>
   <van-row>
-    <van-col v-for="tag in activeIds" span="4">
-      <van-tag  closeable size="small" type="primary" @close="doClose(tag)">
+    <van-col v-for="tag in activeIds" :key="tag" span="4">
+      <van-tag closeable size="small" type="primary" @close="doClose(tag)">
         {{ tag }}
       </van-tag>
     </van-col>
@@ -25,11 +25,21 @@
       :items="tagList"
   />
 
-
+  <div style="display: flex; justify-content: center;">
+    <van-button block
+                type="primary"
+                @click="doSearchResult"
+                style="margin: 12px; padding: 0 20px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); background: linear-gradient(45deg, #409eff, #66b1ff);"
+    >
+      搜索
+    </van-button>
+  </div>
 </template>
+
 <script setup>
 import {ref} from 'vue';
 import {showToast} from 'vant';
+import {useRouter} from "vue-router";
 
 const activeIds = ref([]);
 const activeIndex = ref(0);
@@ -88,6 +98,16 @@ const onCancel = () => {
 const doClose = (tag) => {
   activeIds.value = activeIds.value.filter(item => {
     return item !== tag;
+  })
+}
+const router = useRouter()
+
+const doSearchResult = () => {
+  router.push({
+    path: '/user/list',
+    query: {
+      tags: activeIds.value
+    }
   })
 }
 

@@ -5,8 +5,10 @@ import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios.ts";
 import qs from "qs";
 import {Toast} from "vant";
+
 const route = useRoute();
 const {tags} = route.query;
+
 const userList = ref([]);
 
 onMounted(async () => {
@@ -38,24 +40,21 @@ onMounted(async () => {
 })
 
 
-const mockUser = [{
-  id: 1212,
-  username: 'dssdds',
-  userAccount: 's',
-  profile: "dqdnwqdqwoidhqodi",
-  avatarUrl: 'https://cdn.pixabay.com/photo/2023/09/04/17/48/flamingos-8233303_1280.jpg',
-  gender: 1,
-  phone: 'string',
-  email: 'string',
-  userStatus: 1,
-  userRole: 1,
-  planetCode: 121,
-  tags: ['java', 'javaWeb', 'qaaffwefewf', 'sdqdqwdqdwdqd'],
-  createTime: new Date(),
-}]
-
-
-
+// const mockUser = [{
+//   id: 1212,
+//   username: 'dssdds',
+//   userAccount: 's',
+//   profile: "dqdnwqdqwoidhqodi",
+//   avatarUrl: 'https://cdn.pixabay.com/photo/2023/09/04/17/48/flamingos-8233303_1280.jpg',
+//   gender: 1,
+//   phone: 'string',
+//   email: 'string',
+//   userStatus: 1,
+//   userRole: 1,
+//   planetCode: 121,
+//   tags: ['java', 'javaWeb', 'qaaffwefewf', 'sdqdqwdqdwdqd'],
+//   createTime: new Date(),
+// }]
 
 </script>
 
@@ -81,7 +80,6 @@ const mockUser = [{
 <!--      <van-button size="mini">联系我</van-button>-->
 <!--    </template>-->
 <!--  </van-card>-->
-
 <!--</template>-->
 
 <style scoped>

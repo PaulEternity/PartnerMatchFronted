@@ -36,7 +36,7 @@ const toEdit = (editKey: string, editName: string ,currentValue: string) => {
 <template>
 <template v-if="user">
   <van-cell title="昵称" is-link to="/user/edit" :value="user.username" @click="toEdit('昵称','昵称',user.username)"/>
-  <van-cell title="账号" is-link :value="user.userAccount" />
+  <van-cell title="账号"  :value="user.userAccount" />
   <van-cell title="头像" is-link to="/user/edit">
     <template #value>
       <img :src="user.avatarUrl" alt="avatar" style="width: 30px; height: 30px; border-radius: 50%;" />

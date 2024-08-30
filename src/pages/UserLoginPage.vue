@@ -1,32 +1,27 @@
 <script setup lang="ts">
 import {ref} from 'vue';
 import myAxios from "../plugins/myAxios.ts";
-import {Toast} from "vant";
+import {showFailToast, showSuccessToast} from "vant";
+import {useRoute} from "vue-router";
 
-// const router = useRouter();
+const currentRoute = useRoute(); // Renamed here
 const userAccount = ref('');
 const userPassword = ref('');
 const onSubmit = async () => {
   const res = await myAxios.post('/user/login', {
     userAccount: userAccount.value,
     userPassword: userPassword.value
-  })
-  console.log("用户在登录")
+  });
+  console.log("用户在登录");
   if (res.data) {
-    // Toast.success("登录成功！");
-    // const redirectUrl = route.query?.redirect as string ?? '/';
-    // window.location.href = redirectUrl;
+    showSuccessToast("登录成功！");
+     // Use the renamed variable here
+    window.location.href = currentRoute.query?.redirect as string ?? '/';
   } else {
-    // Toast.fail("登录失败");
+    showFailToast("登录失败");
     console.log('错误错误错误');
   }
 };
-
-// return {
-//   username,
-//   password,
-//   onSubmit,
-// };
 
 </script>
 

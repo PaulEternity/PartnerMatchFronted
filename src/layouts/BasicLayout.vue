@@ -1,4 +1,4 @@
-<template>
+<template >
   <van-nav-bar
       title="标题"
       left-text="返回"
@@ -43,5 +43,7 @@ const onClickRight = () => {
 
 
 <style scoped>
-
+#content{
+  padding-bottom: 50px;
+}
 </style>

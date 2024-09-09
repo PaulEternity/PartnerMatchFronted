@@ -9,33 +9,43 @@ const route = useRoute();
 const router = useRouter();
 
 const editUser = ref({
-  editKey: route.query.editKey,
-  currentValue: route.query.currentValue,
-  editName: route.query.editName,
-})
+  editKey: route.query.editKey || '',
+  currentValue: route.query.currentValue || '',
+  editName: route.query.editName || '',
+});
 
 const onSubmit = async () => {
-  const currentUser = await getCurrentUser();
+  try {
+    const currentUser = await getCurrentUser();
+    if (!currentUser) {
+      Toast.fail('用户未登录');
+      return;
+    }
 
-  if (!currentUser) {
-    Toast.fail('用户未登录');
-    return;
-  }
+    console.log(currentUser, '当前用户');
 
-  console.log(currentUser, '当前用户')
+    const res = await myAxios.post('/user/update', {
+      'id': currentUser.id,
+      'userAccount': currentUser.userAccount,
+      'userPassword':currentUser.userPassword,
+      'planetCode':currentUser.planetCode,
+      'createTime':currentUser.createTime,
+      [editUser.value.editKey as string]: editUser.value.currentValue,
+    });
 
-  const res = await myAxios.post('/user/update', {
-    'id': currentUser.id,
-    [editUser.value.editKey as string]: editUser.value.currentValue,
-  })
-  console.log(res, '更新请求');
-  if (res.code === 0 && res.data > 0) {
-    showSuccessToast('修改成功');
-    router.back();
-  } else {
-    showFailToast('修改错误');
+    console.log(res, '更新请求');
+    if (res.code === 0 && res.data > 0) {
+      showSuccessToast('修改成功');
+      router.back();
+    } else {
+      showFailToast('修改错误');
+    }
+  } catch (error) {
+    console.error('提交时出错:', error);
+    showFailToast('提交失败，请稍后再试');
   }
 };
+
 </script>
 
 <template>

@@ -15,6 +15,8 @@ const userList = ref([]);
 onMounted(async () => {
   const userListData = await myAxios.get('/user/recommend', {
     params: {
+      pageSize:8,
+      pageNum:1,
     },
     paramsSerializer: params => {
       return qs.stringify(params, {indices: false})
@@ -22,7 +24,7 @@ onMounted(async () => {
   })
       .then(function (response) {
         console.log('/user/recommend succeed', response);
-        return response?.data;
+        return response?.data?.records;
       })
       .catch(function (error) {
         console.error('/user/recommend error', error);

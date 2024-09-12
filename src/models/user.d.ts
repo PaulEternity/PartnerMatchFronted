@@ -3,7 +3,7 @@
  */
 export type UserType = {
     id: number;
-    username: string;
+    userName: string;
     userAccount: string;
     avatarUrl?: string;
     // profile?: string;

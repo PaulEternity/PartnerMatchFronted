@@ -62,24 +62,32 @@
 
 <script setup lang="ts">
 
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios";
 import {showFailToast, showSuccessToast} from "vant";
+import {TeamType} from "../models/team";
 
 const router = useRouter();
+const route = useRoute();
 // 展示日期选择器
 const showPicker = ref(false);
 
 const minDate = new Date();
 
 // 需要用户填写的表单数据
-const addTeamData = ref()
+const addTeamData = ref<TeamType>({})
+
+const id =   route.query.id;
 
 onMounted(async () => {
+  if(id <= 0){
+    showFailToast("加载队伍失败");
+    return;
+  }
   const res = await myAxios.get("/team/get",{
     params:{
-      id:null,
+      id,
     }
   });
   if (res.data.code === 0 && res.data){

@@ -7,7 +7,7 @@
     </van-tabs>
     <div style="margin-bottom: 16px" />
     <van-button class="add-button" type="primary" icon="plus" @click="toAddTeam">创建队伍</van-button>
-    <team-card-list :teamList="teamList" :myJoinTeamList="myJoinTeamList" />
+    <team-card-list :teamList="teamList" />
     <van-empty v-if="teamList?.length < 1" description="暂无队伍数据" class="empty-state"/>
   </div>
 </template>
@@ -18,7 +18,7 @@ import {useRouter} from "vue-router";
 import TeamCardList from "../components/TeamCardList.vue";
 import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios";
-import {showFailToast, Toast} from "vant";
+import {Toast} from "vant";
 
 const active = ref('public')
 const router = useRouter();
@@ -44,7 +44,6 @@ const toAddTeam = () => {
 }
 
 const teamList = ref([]);
-const myJoinTeamList = ref([]);
 
 /**
  * 搜索队伍
@@ -53,14 +52,14 @@ const myJoinTeamList = ref([]);
  * @returns {Promise<void>}
  */
 const listTeam = async (val = '', status = 0) => {
-  const res = await myAxios.get("/team/list", {
+  const res = await myAxios.get("/team/list/my/create", {
     params: {
       searchText: val,
       pageNum: 1,
       status,
     },
   });
-  if (res?.code === 0) {
+  if (res.data.code === 0) {
     teamList.value = res.data;
   } else {
     Toast.fail('加载队伍失败，请刷新重试');
@@ -75,20 +74,6 @@ onMounted( () => {
 const onSearch = (val) => {
   listTeam(val);
 };
-
-const listMyJoinTeam = async (val='') => {
-  const res = await myAxios.get("/team/list/my/join",{
-    params:{
-      searchText:val,
-      pageNum:1,
-    },
-  });
-  if(res.data.code === 0){
-    myJoinTeamList.value = res.data;
-  }else {
-    showFailToast("加载队伍失败，请重试");
-  }
-}
 
 </script>
 

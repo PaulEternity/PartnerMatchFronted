@@ -34,7 +34,7 @@ const onSubmit = async () => {
     });
 
     console.log(res, '更新请求');
-    if (res.code === 0 && res.data > 0) {
+    if (res.data.code === 0 && res.data > 0) {
       showSuccessToast('修改成功');
       router.back();
     } else {

@@ -94,7 +94,7 @@ const onSubmit = async () => {
 
   // todo 前端参数校验
   const res = await myAxios.post("/team/add", postData);
-  if (res.data.code === 0 && res.data){
+  if (res?.code === 0 && res.data){
     showSuccessToast('添加成功');
     // router.push({
     //   path: '/team',

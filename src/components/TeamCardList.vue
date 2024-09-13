@@ -54,7 +54,7 @@
 import {TeamType} from "../models/team";
 import {teamStatusEnum} from "../constants/team";
 import myAxios from "../plugins/myAxios";
-import {Dialog, Toast} from "vant";
+import { Toast} from "vant";
 import {onMounted, ref} from "vue";
 import {getCurrentUser} from "../services/user";
 import {useRouter} from "vue-router";

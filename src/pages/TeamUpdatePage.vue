@@ -90,7 +90,7 @@ onMounted(async () => {
       id,
     }
   });
-  if (res.data.code === 0 && res.data){
+  if (res?.code === 0 && res.data){
     addTeamData.value = res.data;
     showSuccessToast('添加成功');
   } else {
@@ -107,7 +107,7 @@ const onSubmit = async () => {
 
   // todo 前端参数校验
   const res = await myAxios.post("/team/update", postData);
-  if (res.data.code === 0 && res.data){
+  if (res?.code === 0 && res.data){
     showSuccessToast('更新成功');
     router.push({
       path: '/team',

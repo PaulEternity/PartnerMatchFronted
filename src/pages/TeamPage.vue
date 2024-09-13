@@ -83,7 +83,7 @@ const listMyJoinTeam = async (val='') => {
       pageNum:1,
     },
   });
-  if(res.data.code === 0){
+  if(res?.code === 0){
     myJoinTeamList.value = res.data;
   }else {
     showFailToast("加载队伍失败，请重试");
